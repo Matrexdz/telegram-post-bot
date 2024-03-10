@@ -44,7 +44,7 @@ def main():
     if title_meta:
         title = title_meta.get('content')
         # Save the title to post.txt with UTF-8 encoding
-        with open('post.txt', 'w', encoding='utf-8') as post_file:
+        with open('files/post.txt', 'w', encoding='utf-8') as post_file:
             post_file.write("✏️: *{}*\n\n".format(title))
 
     else:
@@ -55,7 +55,7 @@ def main():
     if description_meta:
         description = description_meta.get('content')
         # Save the description to post.txt with UTF-8 encoding
-        with open('post.txt', 'a', encoding='utf-8') as post_file:
+        with open('files/post.txt', 'a', encoding='utf-8') as post_file:
             post_file.write("📝: " + description + "\n\n")
 
     else:
@@ -63,21 +63,21 @@ def main():
 
     # Extracting languages
     language_spans = soup.find_all('span', class_='languages')
-    with open('post.txt', 'a', encoding='utf-8') as post_file:
+    with open('files/post.txt', 'a', encoding='utf-8') as post_file:
         for language_span in language_spans:
             language = language_span.get_text(strip=True)
             post_file.write("🔠: " + language + "\n\n")
 
     # Extracting prices
     price_spans = soup.find_all('span', class_='price')
-    with open('post.txt', 'a', encoding='utf-8') as post_file:
+    with open('files/post.txt', 'a', encoding='utf-8') as post_file:
         for price_span in price_spans:
             price = price_span.get_text(strip=True)
             post_file.write("💲:  " + price + " Free\n\n")
 
     # Extracting publishers
     publisher_spans = soup.find_all('span', class_='publisher')
-    with open('post.txt', 'a', encoding='utf-8') as post_file:
+    with open('files/post.txt', 'a', encoding='utf-8') as post_file:
         for publisher_span in publisher_spans:
             publisher = publisher_span.get_text(strip=True)
             post_file.write("👩‍🏫:  " + publisher + " \n\n")
